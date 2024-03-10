@@ -6,7 +6,7 @@ import requests
 # Configuration
 LIBRARY_NAME = "blossoms_sayak"
 GITHUB_REPO = "sayakpaul/blossom"
-SLACK_WEBHOOK_URL = os.getenv["SLACK_WEBHOOK_URL"]
+SLACK_WEBHOOK_URL = os.getenv("SLACK_WEBHOOK_URL")
 
 
 def check_pypi_for_latest_release(library_name):
