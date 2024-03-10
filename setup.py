@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="blossoms-sayak",
+    name="blossoms_sayak",
     version="0.7.0",
     description="A simple Python package for math operations and geometry calculations.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
