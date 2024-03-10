@@ -6,6 +6,8 @@ setup(
     description="A simple Python package for math operations and geometry calculations.",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
+    author="Sayak Paul",
+    author_email="spsayakpaul@gmail.com",
     package_dir={"": "src"},
     packages=find_packages("src"),
     classifiers=[
