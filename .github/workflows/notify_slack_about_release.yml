@@ -1,6 +1,7 @@
 name: Notify Slack about a release
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
