@@ -61,6 +61,8 @@ def main():
 
     if latest_version and release_info and latest_version == parsed_version:
         notify_slack(SLACK_WEBHOOK_URL, LIBRARY_NAME, latest_version, release_info)
+    else:
+        raise ValueError("There were some problems.")
 
 
 if __name__ == "__main__":
