@@ -24,7 +24,7 @@ jobs:
         id: fetch_latest_branch
         run: |
           pip install -U requests packaging
-          LATEST_BRANCH=$(python find_latest_release_branch.py)
+          LATEST_BRANCH=$(python fetch_latest_release_branch.py)
           echo "Latest branch: $LATEST_BRANCH"
           echo "latest_branch=$LATEST_BRANCH" >> $GITHUB_ENV
           
@@ -33,6 +33,7 @@ jobs:
         run: echo "::set-output name=latest_branch::${{ env.latest_branch }}"
 
   release:
+    needs: find-and-checkout-latest-branch
     runs-on: ubuntu-latest
 
     steps:
