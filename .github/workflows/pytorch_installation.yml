@@ -1,0 +1,36 @@
+
+# Adapted from https://blog.deepjyoti30.dev/pypi-release-github-action
+
+name: PyPI release
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pytorch-installation-diffusers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U torch
+
+      - name: Test installing diffusers and importing
+        run: |
+          pip install diffusers && pip uninstall diffusers -y
+          pip install -i https://testpypi.python.org/pypi diffusers
+          python -c "from diffusers import __version__; print(__version__)"
+          python -c "from diffusers import DiffusionPipeline; pipe = DiffusionPipeline.from_pretrained('fusing/unet-ldm-dummy-update'); pipe()"
+          python -c "from diffusers import DiffusionPipeline; pipe = DiffusionPipeline.from_pretrained('hf-internal-testing/tiny-stable-diffusion-pipe', safety_checker=None); pipe('ah suh du')"
+          python -c "from diffusers import *"
